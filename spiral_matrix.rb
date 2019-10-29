@@ -16,4 +16,4 @@ def print_matrix(m)
   m.each {|row| puts row.map {|x| "%#{width}s " % x}.join}
 end
  
-print_matrix spiral(4)
+print_matrix spiral(3)

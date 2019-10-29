@@ -16,30 +16,43 @@ class MatrixService
       p row
     end
     puts '--------------------'
+    if dimensions >= 5
+      p "Ayoko na Wag na po"
+    else
+      result << matrix.shift
 
-    result << matrix.shift
-    p matrix
-    p result
-
-    row = 0
-    col = 0
-    while row <= dimensions
-      while col < row
+      row = 0
+      col = 0
+      while row < dimensions-1
         minimmum = matrix[row].min
         maximmum = matrix[row].max
         matrix[row][0] = maximmum
         matrix[row][-1] = minimmum
-        col+=1
+
+        result << matrix[row]
+        row+=1
       end
-      row+=1
-      result << matrix[row]
-    end
 
+      if dimensions == 3
+        previous_min = result[1].min
+        current_min = result[-1].min
 
-    result.each do |row|
-      p row
+        result[1][result[1].rindex(previous_min)] = current_min
+        result[-1][result[-1].rindex(current_min)] = previous_min 
+        result[1], result[-1] = result[-1],result[1]
+        result[1][0] ,result[1][1] = result[1][1], result[1][0]
+        result[-1] = result[-1].sort.reverse
+      end
+
+      if dimensions == 4
+
+      end
+
+      result.each do |row|
+        p row
+      end
     end
   end
 end
 
-MatrixService.call(3)
+MatrixService.call(4)
