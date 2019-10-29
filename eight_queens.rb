@@ -12,14 +12,33 @@
 class EightQueens
   def self.call(str_arr)
     position = (str_arr)
-    position = position.each_slice(')')
-    position.each do |char|
-      char.each_char do |xval, yval|
-        puts "#{xval},#{yval}"
+    position_per_queen = position.each_slice(1)
+    position_per_queen.each_cons(2) do |pair_1,pair_2|
+      pair_1 = pair_1.to_s.gsub(/\W+/, '')
+      pair_2 = pair_2.to_s.gsub(/\W+/, '')
+      pair1_int = pair_1.to_i
+      pair2_int = pair_2.to_i
+      pair_1.each_char do |pair1|
+        pair_2.each_char do |pair2|
+          if pair1.to_i >= 9 || pair2.to_i >= 9 || pair1.to_i <= 0 || pair2.to_i <= 0
+            return "Invalid Coordinates"
+          end
+          if pair1_int%11 == 10 && pair2_int%11 == 10
+            return "#{pair_1.split(//).map{|chr| chr.to_i}}:#{pair_2.split(//).map{|chr| chr.to_i}}"
+          elsif pair1_int%11 == 0 && pair2_int%11 == 0
+            return "#{pair_1.split(//).map{|chr| chr.to_i}}:#{pair_2.split(//).map{|chr| chr.to_i}}"
+          elsif pair1_int%11 == 1 && pair2_int%11 == 1
+            return "#{pair_1.split(//).map{|chr| chr.to_i}}:#{pair_2.split(//).map{|chr| chr.to_i}}"
+          elsif pair1 == pair2
+            return "#{pair_1.split(//).map{|chr| chr.to_i}}:#{pair_2.split(//).map{|chr| chr.to_i}}"
+          else
+            next
+          end
+        end
       end
     end
   end
 end
 
-str_arr = ["(2,1)", "(4,3)", "(6,3)", "(8,4)", "(3,4)", "(1,6)", "(7,7)", "(5,8)"]
+str_arr = ["(1,1)", "(1,5)", "(6,3)", "(8,4)", "(3,4)", "(1,6)", "(7,7)", "(5,8)"]
 p EightQueens.call(str_arr)
