@@ -45,6 +45,30 @@ class MatrixService
       end
 
       if dimensions == 4
+        previous_min = result[1].min
+        current_min = result[-1].min
+        result[1][result[1].rindex(previous_min)] = current_min
+        result[-1][result[-1].rindex(current_min)] = previous_min
+
+        result[1], result[-1] = result[-1],result[1]
+
+        previous_min = result[2].min
+        current_min = result[-1].min
+        result[2][result[2].rindex(previous_min)] = current_min
+        result[-1][result[-1].rindex(current_min)] = previous_min
+
+        previous_max = result[1].max
+        current_max = result[2].max
+        result[1][result[1].rindex(previous_max)] = current_max
+        result[2][result[2].rindex(current_max)] = previous_max
+
+        result[2][1] ,result[-1][-1] = result[-1][-1], result[2][1]
+        result[-1] = result[-1].sort.reverse
+
+        result[2][0] ,result[2][2] = result[2][2], result[2][0]
+        result[1][2] ,result[2][1] = result[2][1], result[1][2]
+        result[1][1] ,result[1][2] = result[1][2], result[1][1]
+        result[2][1] ,result[2][2] = result[2][2], result[2][1]
 
       end
 
@@ -55,4 +79,4 @@ class MatrixService
   end
 end
 
-MatrixService.call(4)
+MatrixService.call(5)
