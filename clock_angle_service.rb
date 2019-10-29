@@ -20,7 +20,7 @@
 class ClockAngleService
   def self.call(hour, minutes)
     if hour >12 || hour < 0 || minutes > 60 || minutes < 0
-      puts "Input numbers within the clock"
+      return "Input numbers within the clock"
     else
 
       if hour == 12
@@ -42,10 +42,9 @@ class ClockAngleService
         hour = 12
       end
 
-      puts "#{angle} degrees at #{hour}:#{minutes}"
+      return "#{angle} degrees at #{hour}:#{minutes}"
     end
   end
 end
 
-ClockAngleService.call(7,30)
-puts 
+p ClockAngleService.call(7,30)

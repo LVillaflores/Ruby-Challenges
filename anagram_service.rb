@@ -19,14 +19,12 @@ class AnagramService
   def self.call(strA, strB)
     sentence_1 = strA.downcase.gsub!(/\W+/, '').chars.sort
     sentence_2 = strB.downcase.gsub!(/\W+/, '').chars.sort
-    p sentence_1
-    p sentence_2
     if sentence_1.eql?sentence_2
-      p "('#{strA}', '#{strB}') --> True"
+      return "('#{strA}', '#{strB}') --> True"
     else
-      p "('#{strA}', '#{strB}') --> False"
+      return "('#{strA}', '#{strB}') --> False"
     end
   end
 end
 
-AnagramService.call("A decimal point", "I'm a dot in place")
+p AnagramService.call("A decimal point", "I'm a dot in place")

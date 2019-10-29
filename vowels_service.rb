@@ -7,7 +7,7 @@
 #   Vowels.call('Why do you ask?') --> 4
 #   Vowels.call('Why?') --> 0
 
-class Vowels
+class VowelsService
   def self.call(str)
     vowel = ["a", "e", "i", "o", "u"]
     count = 0
@@ -17,9 +17,8 @@ class Vowels
         count +=1
       end
     end
-    puts str
-    puts "Vowel count: #{count}"
+    return "#{str}-> Vowel count: #{count}"
   end
 end
 
-Vowels.call('Hi I am Lorenzo.')
+p VowelsService.call('Hi I am Lorenzo.')

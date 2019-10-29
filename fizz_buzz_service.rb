@@ -24,7 +24,7 @@
 class FizzBuzzService
   def self.call(n)
     count = (1..n).to_a
-    count.map do |value|
+    return count.map do |value|
       if value%3==0 && value%5==0
         value = "FizzBuzz"
       elsif value%5==0
@@ -38,5 +38,4 @@ class FizzBuzzService
   end
 end
 
-print FizzBuzzService.call(15)
-puts 
+p FizzBuzzService.call(15)

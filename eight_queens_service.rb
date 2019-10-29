@@ -9,7 +9,7 @@
 # str_arr = ["(2,1)", "(4,3)", "(6,3)", "(8,4)", "(3,4)", "(1,6)", "(7,7)", "(5,8)"]
 # EightQueens.call(str_arr)
 # expected output: (2,1)
-class EightQueens
+class EightQueensService
   def self.call(str_arr)
     position = (str_arr)
     position_per_queen = position.each_slice(1)
@@ -41,4 +41,4 @@ class EightQueens
 end
 
 str_arr = ["(1,1)", "(1,5)", "(6,3)", "(8,4)", "(3,4)", "(1,6)", "(7,7)", "(5,8)"]
-p EightQueens.call(str_arr)
+p EightQueensService.call(str_arr)

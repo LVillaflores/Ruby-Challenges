@@ -10,7 +10,7 @@
 #   Fib.call(3) # => [0, 1, 1, 2]
 #   Fib.call(6) # => [0, 1, 1, 2, 3, 5, 8]
 
-class Fib
+class FibService
   def self.call(n)
     i = 0
     sequence = [0, 1]
@@ -21,9 +21,8 @@ class Fib
       sequence << sum
       i +=1
     end
-    print sequence[0..n]
+    return sequence[0..n]
   end
 end
 
-Fib.call(3)
-puts
+p FibService.call(3)

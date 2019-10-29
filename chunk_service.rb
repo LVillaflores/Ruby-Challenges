@@ -18,7 +18,8 @@
 class ChunkService
   def self.call(arr, n)
     array = arr.sort
-    array = array.each_slice(n) {|a| print a}
+    array = array.each_slice(n) {|a| p a}
+    return array
   end
 end
 
